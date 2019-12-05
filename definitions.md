@@ -252,6 +252,19 @@ catch(ArithmeticException e) {
 - Kafka As A Storage System
     - Data written to Kafka is written to disk and replicated for fault-tolerance.
     - Kafka allows producers to wait on acknowledgement so that a write isn't considered complete until it is fully replicated and guaranteed to persist even if the server written to fails.
-
-### Class loading Java
-### Bankers Algorithm
+### Serialization and Deserialization
+- Serialization is the mechanism of converting the state of an object into a byte stream.
+- Deserialization is the reverse process where the byte stream is used to recreate the actual Java object in memory.
+![image](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2016/01/serialize-deserialize-java.png)
+- The byte stream created is platform independent. So, the object serialized on one platform can be deserialized on a different platform.
+- To make java object serializable it needs to implement ```java.io.Serializable``` interface
+- used to save the state of an object or to transfer an object across a network.
+- Serializable is a **Marker Interface** ( has no datamember of method ).
+- Only non-static data members are saved via Serialization process.
+- static data members and transient data memebers are not saved via Serialization process.
+- Constructor is never called while deserialization
+- Serializable runtime assosciates a version number with each serializable class called ```SerialVersionUID```, which is used during Deserialization.
+- If the reciever has loaded an object that had different UID than that of corresponding sender's class, the deserialization will result in an ```InvalidClassCastException```.
+- ``` ANY-ACCESS-MODIFIER static final long serialVersionUID=42L;``` preferably final
+- a variable defined as ```transient``` is not serialized during serialization process. This variable will be initialized with default value during deserialization.
+- a variable defined as ```static``` is not serialized during serialization. This variable will be loaded with current value defined in the class during deserialization.
