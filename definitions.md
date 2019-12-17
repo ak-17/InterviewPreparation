@@ -268,3 +268,6 @@ catch(ArithmeticException e) {
 - ``` ANY-ACCESS-MODIFIER static final long serialVersionUID=42L;``` preferably final
 - a variable defined as ```transient``` is not serialized during serialization process. This variable will be initialized with default value during deserialization.
 - a variable defined as ```static``` is not serialized during serialization. This variable will be loaded with current value defined in the class during deserialization.
+### Design Patterns
+- Factory Pattern
+- Strategy Pattern
