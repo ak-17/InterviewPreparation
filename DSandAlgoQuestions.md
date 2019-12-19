@@ -8,3 +8,6 @@
 8. [Print all nodes at distance k from a given node](https://www.geeksforgeeks.org/print-nodes-distance-k-given-node-binary-tree/)
 9. [burn binary tree](https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/)
 10. [Transform One String to Another using Minimum Number of Given Operation](https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/)
+11. [Two nodes of a BST are swapped, correct the BST](https://www.geeksforgeeks.org/fix-two-swapped-nodes-of-bst/)
+12. [Find maximum of minimum for every window size in a given array](https://www.geeksforgeeks.org/find-the-maximum-of-minimums-for-every-window-size-in-a-given-array/)
+14. [Largest sum subarray with at-least k numbers](https://www.geeksforgeeks.org/largest-sum-subarray-least-k-numbers/) 

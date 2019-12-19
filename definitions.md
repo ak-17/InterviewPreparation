@@ -268,6 +268,95 @@ catch(ArithmeticException e) {
 - ``` ANY-ACCESS-MODIFIER static final long serialVersionUID=42L;``` preferably final
 - a variable defined as ```transient``` is not serialized during serialization process. This variable will be initialized with default value during deserialization.
 - a variable defined as ```static``` is not serialized during serialization. This variable will be loaded with current value defined in the class during deserialization.
-### Design Patterns
-- Factory Pattern
-- Strategy Pattern
+### CAP THEOREM
+- CAP Theorem is a concept that a distributed database system can only have 2 of the 3: Consistency, Availability and Partition Tolerance.
+- ![image](https://miro.medium.com/max/444/1*WPnv_6sG9k4oG3S1A09MDA.jpeg)
+- It is very important while designing distributed systems and take decissions by tradeoffs.
+- Partition Tolerance
+    - A system that is partition-tolerant can sustain any amount of network failure that doesn’t result in a failure of the entire network.
+    - Data records are sufficiently replicated across combinations of nodes and networks to keep the system up through intermittent outages.
+    - When dealing with modern distributed systems, Partition Tolerance is not an option. It’s a necessity. Hence, we have to trade between Consistency and Availability.
+- High Consistency
+    - A guarantee that every node in a distributed cluster returns the same, most recent, successful write. 
+    - This condition states that all nodes see the same data at the same time.
+    - Simply put, performing a read operation will return the value of the most recent write operation causing all nodes to return the same data. 
+    -  A system has consistency if a transaction starts with the system in a consistent state, and ends with the system in a consistent state. 
+    -  In this model, a system can (and does) shift into an inconsistent state during a transaction, but the entire transaction gets rolled back if there is an error during any stage in the process.
+- High Availability
+    - Every non-failing node returns a response for all read and write requests in a reasonable amount of time.
+    - This condition states that every request gets a response on success/failure.
+### OSI MODEL (Open System Interconnection Model
+- Introduced to standardize communication
+- Conceptual framework used that describes the functions of a networking system.
+- 7 Layers (All People Seem To Need Data Processing)
+    - 7. Application
+    - 6. Presentation
+    - 5. Session
+    - 4. Transport
+    - 3. Network
+    - 2. Data Link
+    - 1. Physical
+- Application Layer
+    - Application layer acts as an interface to access network services for clients.
+    - It has protocols to communicate through http and https
+    - It sends and recieves information from Presentation layer.
+    - Layer that is closest to end user.
+- Presentation Layer
+    - Transforms the data from application format to network format and vice-versa.
+    - example is encryption and decryption of data for secure transmission.
+- Session
+    - Used to create a session to communicate between two devices.
+    - Functions at this layer involve setup, coordination and termination b/w applications at the end of session.
+- Transport
+    - It deals with the cooordination of the data transfer between end systems and hosts.
+    - How much data to send, at what rate, where it goes etc
+    - It ensures data units are delivered error-free and in sequence.
+    - The best known example of the Transport Layer is the Transmission Control Protocol (TCP), which is built on top of the Internet Protocol (IP), commonly known as TCP/IP.
+    - TCP and UDP port numbers work at transport layer.
+- Network
+    - Network Layer is where we'll find most of the router functionality that most networking professionals care about and love. 
+    - It is responsible for packet forwarding, including routing through different routers.
+    - IP addresses work at Network layer.
+- Data Link
+    - this provides node to node data transfer and also handles error correction from physical layer.
+    - This consists of two sub-layers 
+        - Media Access Layer (MAC)
+        - Logical Link Layer (LLC)
+    - Most switches operate at data link layer
+- Physical
+    - This represents electrical and physical representation of our system.
+    - This includes everything from cable type, radio link.
+
+### TCP/IP Model (Transport Control Protocol / Internet Protocol) 
+- TCP/IP helps you how a specific computer should be connected to the internet and how  data should be transmitted between them.
+- It is designed to offer highly reliable and end-to-end byte stream over an unreliable network.
+- Support for a flexible architecture and adding to a network is easy.
+- It is a **connection-oriented** protocol
+- Four layers of TCP/IP
+    - Application
+    - Transport
+    - Internet
+    - Network Interface
+- It is a layered server architecture system in which each layer is defined according to a specific function to perform.
+- ![image](https://www.guru99.com/images/1/093019_0615_TCPIPModelW2.png)
+- Application Layer
+    - The application layer is the OSI layer, which is closest to the end-user.
+    - Application Layer interacts with software applications to implement a communicating component.
+    - talks to transport layer using ports;
+    - http uses port 80
+- Transport Layer
+    - TCP and UDP
+    - TCP adds headers to the packets so the reciving computer knows how to construct the data and check for any losses.
+- Internet Layer
+    - attaches both origin and destination addresses to the packet so it knows where to go and where it came from.
+    -  The main work of this layer is to send the packets from any network, and any computer still they reach the destination irrespective of the route they take.
+    - Layer-management protocols that belong to the network layer are:
+        - Routing protocols
+        - Multicast group management
+        - Network-layer address assignment.
+- Network Interface Layer
+    - This layer is also called a network access layer. It helps you to defines details of how data should be sent using the network.
+    - Handles mac addressing so the data goes to the right physical machine as well as converting data to electrical impulses.
+- Differences between OSI and TCP/IP
+![image](https://www.guru99.com/images/1/093019_0615_TCPIPModelW3.png)
+- 
