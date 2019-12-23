@@ -35,16 +35,15 @@ String Pool in java is a pool of Strings stored in Java Heap Memory to save memo
 - Lambda expression provides implementation of functional interface.
 - It provides a clear and concise way to represent one method interface (Functional Interface) using an expression. Syntax : (argument-list) -> {body}
 ### Access Modifiers
-- access modifiers in Java helps to restrict the scope of a class, constructor , variable , method or data member.
-1. Default
-No keyword required The data members, class or methods which are not declared using any access modifiers i.e. having default access modifier are accessible only within the same package.
-2.public
-The public access modifier has the widest scope among all other access modifiers.
-3.private
-The methods or data members declared as private are accessible only within the class in which they are declared.
-private and protected modifiers in terms of application to classes, they apply only to nested classes and not on top level classes.
-4.protected 
-the methods or data members declared as protected are accessible   within same package or sub classes in different package. 
+- access modifiers in Java helps to restrict the scope of a class, constructor , variable , method or data member.   
+- Default
+    - No keyword required The data members, class or methods which are not declared using any access modifiers i.e. having default access modifier are accessible only within the same package.   
+- public
+    - The public access modifier has the widest scope among all other access modifiers.
+- private
+    - The methods or data members declared as private are accessible only within the class in which they are declared. private and protected modifiers in terms of application to classes, they apply only to nested classes and not on top level classes.
+- protected 
+    - the methods or data members declared as protected are accessible   within same package or sub classes in different package. 
 ### Non-Access Modifiers -
 They are used with classes, methods, variables, constructors etc to provide information about their behavior to JVM.
 
