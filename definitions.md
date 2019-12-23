@@ -359,4 +359,26 @@ catch(ArithmeticException e) {
     - Handles mac addressing so the data goes to the right physical machine as well as converting data to electrical impulses.
 - Differences between OSI and TCP/IP
 ![image](https://www.guru99.com/images/1/093019_0615_TCPIPModelW3.png)
-- 
+### TCP vs UDP
+- TCP : Transmission Control Protocol
+- UDP : User Datagram Protocol
+- Tcp is connection oriented i.e once a connection is established data can be sent bidirectional
+- Udp is a simpler connectionless Internet protocol. Multiple messages are sent as packets in chunks using udp.
+- In udp one program can send a load of packets to another and that would be end of the relationship.
+- TCP : HTTP, HTTPS, FTP, SMTP
+- UDP: DNS,VOIP
+- TCP rearranges data packets in the order specified
+- UDP has no inherent order as all packets are independent of each other. If ordering is required it has to managed by the application layer.
+- UDP is faster than TCP because error recovery is not attempted. It is a best effort protocol.
+- Reliability
+    - TCP is more reliable since it manages message acknowledgement and retransmissions in case of lost parts. Thus there is absolutely no missing data.
+    - UDP does not ensure that communication has reached receiver since concepts of acknowledgement, time out and retransmission are not present.
+- Ordering
+    - TCP transmissions are sent in sequence and they are recieved in same sequence. If they arrive in wrong order, it reorders and delivers application.
+    - in UDP message sequence may not be maintained when it reaches receiving application. There is absolutely no way of predicting the order in which message will be recieved.
+- Connection
+    - Tcp is a heavy weight connection requiring three packets for a socket connection and handles congestion control and  reliability
+    - UDP is a lightweight transport layer designed a top an IP. There are no tracking connections or ordering of messages.
+- Method of transfer
+    - Tcp reads data as byte stream and message is transmitted a to segment boundaries.
+    - UDP messages are packets which are sent individually and on arrival are checked for their integrity. Packets have defined boundaries while data stream has none
