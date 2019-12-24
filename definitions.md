@@ -381,3 +381,27 @@ catch(ArithmeticException e) {
 - Method of transfer
     - Tcp reads data as byte stream and message is transmitted a to segment boundaries.
     - UDP messages are packets which are sent individually and on arrival are checked for their integrity. Packets have defined boundaries while data stream has none
+### DataBase Keys
+- Super Key : Any attribute or a set of attributes that are used to uniquely identify a row is super key.
+- Candidate Key : A minimal subset of a super key is a candidate key
+- Primary Key : A key choosen from Candidate key which best represents the table is a primary key
+- Foreign Key : A key that is used to express relation ship between two tables is a foreign key.
+- Composite Key: A super set of Candidate keys is a Composite key.
+- Compound Key : A Composite key that has a foreign attribute is called Compound Key.
+- Surrogate Key : A Table that does not have a natural primary key. Then a artificial key is added to table to uniquely identify rows.
+### DataBase Normalisation
+- Normalisation is done to minimize data redundancy from a relation or a set of relations.
+- Redundancy may cause irregularities while insertion, deletion and updation.
+- Non-Prime Attribute : Attributes that are not part of any candidate keys
+- 1NF
+    - A table is said to be in 1NF if it doesnot contain any multivalued attributes.
+- 2NF
+    - A table is said to be in 2NF if it is in 1NF and does not contain any **partial dependency**
+    - Partial Dependency : If the proper subset of a candidate key determines non-prime attribute, it is called partial dependency.i.e a non-prime attribute is related to a subset of candidate key.
+- 3NF
+    - A table is said to be in 3NF it is in 2NF and does not have transtive dependency for non-prime attributes.
+    - When an attribute in the table depends on some non-prime attribute but not on prime attribute the it is transtive dependency.
+    - For a functional dependency A -> B. If A is non-prime and B is non-prime then it is called transitive dependency.
+- BCNF (Boyce Codd Normal Form)
+    - A table is said to be in BCNF, it should be in 3NF and for any dependency A -> B, A should always be a super key i.e for A -> B, A cannot be a non-prime attribute with B being a prime attribute.
+    
