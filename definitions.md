@@ -106,6 +106,12 @@ They are used with classes, methods, variables, constructors etc to provide info
 - Overloading is an example of compiler time polymorphism and overriding is an example of run time polymorphism.
 ### Overriding
 - Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes Read more about this.
+### Hiding
+- static methods can be inherited by child class.
+- Hiding is what occurs when a static is method is declared in child class with the same signature.
+- You cannot achieve runtime polymorphism with static methods since they are class methods, not instance methods.
+- [Read Here for more details](http://geekexplains.blogspot.com/2008/06/can-you-override-static-methods-in-java.html).
+- This is called hiding.
 ### Runnable and Callable
 - Runnables can be executed using Thread class or Executor Service. Callable is executed using Executor service.
 - Runnable interface is a functional interface that has a single run() method which doesn't accept any parameters and does not return any value (void method).
@@ -115,6 +121,9 @@ They are used with classes, methods, variables, constructors etc to provide info
 - Callable's call() method contains “throws Exception” clause so we can easily propagate checked exceptions further.
 ### Deadlock
 Deadlock is a situation when two threads are waiting for each other and the waiting is never ends. Here both threads cant completes their tasks.
+### Race Condition
+- It is the condition where several processes tries to access the resources and modify the shared data concurrently and outcome of the process depends on the particular order of execution that leads to data inconsistency, this condition is called Race Condition.
+- This condition can be avoided using the technique called Synchronization or Process Synchronization, in which we allow only one process to enter and manipulates the shared data in Critical Section.
 ### Starvation
 - In Starvation, threads are also waiting for each other.
 - But here waiting time is not infinite after some interval of time, waiting thread always gets the resources whatever is required to execute thread run() method.
