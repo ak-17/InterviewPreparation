@@ -413,4 +413,10 @@ catch(ArithmeticException e) {
     - For a functional dependency A -> B. If A is non-prime and B is non-prime then it is called transitive dependency.
 - BCNF (Boyce Codd Normal Form)
     - A table is said to be in BCNF, it should be in 3NF and for any dependency A -> B, A should always be a super key i.e for A -> B, A cannot be a non-prime attribute with B being a prime attribute.
-    
+### Operating Systems Keywords
+- Mutex
+- Semaphore
+- Race Condition
+- Critical Section
+- Priority Inversion
+- Atomicity
