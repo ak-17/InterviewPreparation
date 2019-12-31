@@ -417,6 +417,10 @@ catch(ArithmeticException e) {
 - Mutex
 - Semaphore
 - Race Condition
+    Several processes access and process the manipulations over the same data concurrently, then the outcome depends on the particular order in which the access takes place.
 - Critical Section
 - Priority Inversion
 - Atomicity
+- Independent Process : Execution of one process does not affects the execution of other processes.
+- Cooperative Processes : Execution of one process affects the execution of other processes.
+- https://www.geeksforgeeks.org/introduction-of-process-synchronization/
