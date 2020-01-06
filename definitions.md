@@ -120,7 +120,19 @@ They are used with classes, methods, variables, constructors etc to provide info
     - Future<Integer> future = executorService.submit(task); future.get(); // exception is thrown only when we call future.get(); or else not thrown
 - Callable's call() method contains “throws Exception” clause so we can easily propagate checked exceptions further.
 ### Deadlock
-Deadlock is a situation when two threads are waiting for each other and the waiting is never ends. Here both threads cant completes their tasks.
+- Deadlock is a situation when two threads are waiting for each other and the waiting is never ends. Here both threads cant completes their tasks.
+- Deadlock is a situation where a set of processes are blocked because each process is holding one or more resources and waiting for another resource acquired by some other process and they are in a circular fashion.
+- Deadlock can arise if following conditions hold true (Coffman conditions)
+    - Mutual Exclusion: One or more than one resource are non-sharable (Only one process can use at a time)
+    - Hold and Wait: A process is holding at least one resource and waiting for resources.
+    - No Preemption: A resource cannot be taken from a process unless the process releases the resource.
+    - Circular Wait: A set of processes are waiting for each other in circular form.
+- Methods to handle deadlock
+    - Deadlock prevention or avoidance : Prevention can be done by negating atleast one of the above mentioned necessary conditions for deadlock.
+        - For avoidance we need to know all the information about the resources that processes will require in the future.
+        - Bankers Algorithm is used for deadlock detection
+    - Deadlock detection and recovery : Let deadlock occur and then do preemption to handle it
+    - ignore the problem : if deadlock is very rare, then let it happen and reboot the system.Windows and unix take this approach
 ### Race Condition
 - It is the condition where several processes tries to access the resources and modify the shared data concurrently and outcome of the process depends on the particular order of execution that leads to data inconsistency, this condition is called Race Condition.
 - This condition can be avoided using the technique called Synchronization or Process Synchronization, in which we allow only one process to enter and manipulates the shared data in Critical Section.
@@ -390,6 +402,15 @@ catch(ArithmeticException e) {
 - Method of transfer
     - Tcp reads data as byte stream and message is transmitted a to segment boundaries.
     - UDP messages are packets which are sent individually and on arrival are checked for their integrity. Packets have defined boundaries while data stream has none
+### ACID properties
+- A *transaction* is a single logical unit of work which accesses and possibly modifies the contents of a database.
+- In order to maintain consistency in database certain conditions need to be followed. These are ACID properties.
+- Atomicity - A transaction has to take place completely or does not take place at all. Partial trasactions are not allowed.
+- Consistency - Database before the transaction and after the transaction must be consistent.
+- Isolation - Multiple transactions must be able to perform independently without interference. Changes occuring in a particular transaction will not be visible to any other transaction until that change is written to memory.
+- Durability - Changes of a successfull transaction should reflect even if the system goes down.
+### Indexing
+- 
 ### DataBase Keys
 - Super Key : Any attribute or a set of attributes that are used to uniquely identify a row is super key.
 - Candidate Key : A minimal subset of a super key is a candidate key
@@ -413,6 +434,94 @@ catch(ArithmeticException e) {
     - For a functional dependency A -> B. If A is non-prime and B is non-prime then it is called transitive dependency.
 - BCNF (Boyce Codd Normal Form)
     - A table is said to be in BCNF, it should be in 3NF and for any dependency A -> B, A should always be a super key i.e for A -> B, A cannot be a non-prime attribute with B being a prime attribute.
+### Scheduling Algorithms
+- Arrival Time: Time at which the process arrives in the ready queue.
+- Completion Time: Time at which process completes its execution.
+- Burst Time: Time required by a process for CPU execution.
+- Turn Around Time: Time Difference between completion time and arrival time. Turn Around Time = Completion Time – Arrival Time
+- Waiting Time(W.T): Time Difference between turn around time and burst time. Waiting Time = Turn Around Time – Burst Time
+- Objectives of Scheduling algorithms
+    - Max CPU utilization [Keep CPU as busy as possible]
+    - Fair allocation of CPU.
+    - Max throughput [Number of processes that complete their execution per time unit]
+    - Min turnaround time [Time taken by a process to finish execution]
+    - Min waiting time [Time a process waits in ready queue]
+    - Min response time [Time when a process produces first response]
+- FCFS (First Come First Serve)
+    - Simplest scheduling algorithm that schedules according to arrival times of processes.
+    - Implemented using FIFO queue
+    - non-preemptive scheduling algorithm
+    - suffers from convoy effect
+- Shortest Job First (SJF)
+    - Process which have short burst times are scheduled first.
+    - if two processess have same burst time then FCFS is taken into consideration
+    - Non-Preemptive scheduling algorithm
+- Shortest Remaining Time First (SRTF)
+    - Preemptive model of SJF algorithm in which jobs are scheduled according to shortest remaining time
+- Longest Job First (LJF)
+    - Similar to SJF, but priority is given to process with long burst time
+    - Non-Preemptive
+- Longest Remaining Time First (LRTF)
+    - Similar to above, longer remaining times are given priority
+- Round Robing Scheduling
+    - Each Process is assigned a fixed CPU time (time quantum) in a cyclic way.
+    - It is designed for time-sharing systems
+    - A circular queue is used for ready queue
+    - After a 1 time quantum, context switch happens and the process is inturrupted and it will be put at the tail of queue.
+- Priority Based Scheduling
+    - Processess are scheduled according to priorities
+    - if two priorities match, then the one which arrived earlier will be scheduled first.
+    - starvation is possible.
+- High Response Ratio Next
+    - processess with high respose ratio are scheduled first
+    - Response Ration = (Waiting Time + Burst Time)/Burst Time
+- FCFS can cause long waiting times, when first job takes lot of time
+- SJF and SRTF may cause starvation
+- If time quantum is very long then Round Robin behaves as FCFS
+- SJF is optimal in terms of avg waiting time for a given set of processess. But we cannot predict time of next job.
+### Mutex and Semaphore
+- Mutex and Semaphores are used to handle critical section problems. They are process synchronization tools.
+- The basic difference between them is
+    - Semaphore is a signalling mechanism i.e processess perform wait() and signal() operation to indicate whether they are acquiring or releasing the resource.
+    - Mutex is a locking mechanism, it has to aquire the lock on mutex object if it wants to acquire the resource.
+- Semaphore
+    - Semaphore: It is a typically an integer variable that is initialized to the number of resources present in the system and the value can be modified by only wait() and signal().
+    - The wait() and signal() operation modify the value of the semaphore indivisibly. It means that when a process is modifying the value of the semaphore, no other process can simultaneously modify the value of the semaphore.
+    - Semaphores are distinguised by the operating system in two categories *counting semaphore* and *Binary Semaphore*
+    - In Counting Semaphore, the semaphore S value is initialized to the number of resources present in the system. Whenever a process wants to access the resource it performs wait() operation on the semaphore and decrements the value of semaphore by one. When it releases the resource, it performs signal() operation on the semaphore and increments the value of semaphore by one.
+    - When the semaphore count goes to 0, it means all resources are occupied by the processes. If a process need to use a resource when semaphore count is 0, it executes wait() and get blocked until the value of semaphore becomes greater than 0.
+    - Binary Semaphore is similar to mutex but mutex is a locking mechanism where as semaphore is a signalling mechanism.
+- Mutex
+    - Only one process can access the given resource.
+    - Mutex object allows the multiple program threads to use the same resource but one at a time not simultaneously.
+    - Meanwhile, a process has acquired the lock on mutex object no other thread/process can access that resource. If the mutex object is already locked, the process desiring to acquire the lock on mutex object has to wait and is queued up by the system till the mutex object is unlocked.
+- Key Differences
+    - Semaphore is a signalling mechanism as wait() and signal() are performed on semaphore variable to indicate whether a process is acquiring a resource or releasing a resource. Mutex is a locking mechanism, as to acquire a resource, a process need to lock a mutex object and while releasing it has to unlock mutex object
+    - Semaphore is typically an integer where as mutex is an object.
+    - Semaphore allows multiple instances of threads to access a finite instance of resources. Mutex allows multiple program threads to access a single shared resource but one at a time
+    - Semaphore variable can be modified by any process acquires or releases resource by calling wait() or signal() operations. Lock acquired on mutex object has to be released only by the process that has acquired it.
+### Virtual Memory
+- secondary memory: Hard disk (Logical Address Space)
+- main memory : RAM
+- Virtual Memory is a storage allocation scheme in which secondary memory can be addressed as though it were part of main memory. (Illusion of large main memory)
+- Only few pages of a process are loaded into frames in main memory. when the process requires a page and it is not present in page-table,(this is called page fault) then the process gets interuppted and os takes over to bring the required page into main memory and swap it with a existing or a empty frame and updates the page table.
+- This way processes that are larger than main memory can be executed.
+- If there is too much swapping of pages, then it is called thrashing.
+- The process of loading a page into memory on demand is called demand paging.
+- ![image](https://media.geeksforgeeks.org/wp-content/uploads/VirtualDiagram-1.png)
+- https://www.geeksforgeeks.org/virtual-memory-in-operating-system/
+### Page Fault
+- A page fault occurs when a program attempts to access a block of memory that is not stored in the physical memory, or RAM.
+- This notifies the OS that it must locate the page from virtual memory, then transfer it from storage device to main memory.
+- Once the page is moved to main memory then the program executes as usual.
+- each page fault requires swapping of pages from virtual memory to primary memory. This is significantly slower than accessing data directly from memory.
+### How data is stored on hard disk
+- Hard disk is a common data storage used in computers. Data is stored on the hard disk in the form of 0 and 1.
+- The part of the hard disk that stores the data is known as platter.
+- Platters are circular disk made of a non magnetic material typically aluminum alloy, glass or ceramic and are coated with a thin layer (10-20nm) of a magnetic material. Platters are further separated in to the tracks and sectors where tracks are concentric circles while sectors are pie shaped wedges on the track.
+- Hard disk stores information in the form of magnetic fields. Data is stored digitally in the form of tiny magnetized regions on the platter where each region represents a bit.
+- To write a data on the hard disk, a magnetic field is placed on the tiny field in one of these two polarities: N-S – If North Pole arrives before the south pole and S-N – if the south pole arrives before the north pole while the field is accessed.
+- An orientation in the one direction (like N-S) can represent the ‘1’ while the opposite orientation (S-N) represents “0”. This polarity is sensed by integrated controllers built within the hard disk.
 ### Operating Systems Keywords
 - Mutex
 - Semaphore
