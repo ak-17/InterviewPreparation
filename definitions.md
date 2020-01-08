@@ -305,6 +305,21 @@ catch(ArithmeticException e) {
 - High Availability
     - Every non-failing node returns a response for all read and write requests in a reasonable amount of time.
     - This condition states that every request gets a response on success/failure.
+### BASE
+- Basically Available Soft State, Eventual Consistency
+- Basically Available : Guarantees the availability of the data. There will be a response to a request on success or failure.
+- Soft State- The state of system can change over time
+- Eventual Consistency - The system will become eventual consistent once it stops receiving input.
+### NoSQL
+- Schema Free
+- Eventual Consistency
+- Replication of data stores to avoid single point of failure
+- can handle data variety and huge amounts of data
+- Types
+    - Key Value Stores
+    - Wide Column Stores
+    - Document databases
+    - Graph Databases
 ### OSI MODEL (Open System Interconnection Model
 - Introduced to standardize communication
 - Conceptual framework used that describes the functions of a networking system.
@@ -522,6 +537,9 @@ catch(ArithmeticException e) {
 - Hard disk stores information in the form of magnetic fields. Data is stored digitally in the form of tiny magnetized regions on the platter where each region represents a bit.
 - To write a data on the hard disk, a magnetic field is placed on the tiny field in one of these two polarities: N-S – If North Pole arrives before the south pole and S-N – if the south pole arrives before the north pole while the field is accessed.
 - An orientation in the one direction (like N-S) can represent the ‘1’ while the opposite orientation (S-N) represents “0”. This polarity is sensed by integrated controllers built within the hard disk.
+### NoSQL
+
+
 ### Operating Systems Keywords
 - Mutex
 - Semaphore
