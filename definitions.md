@@ -585,3 +585,96 @@ catch(ArithmeticException e) {
 - Independent Process : Execution of one process does not affects the execution of other processes.
 - Cooperative Processes : Execution of one process affects the execution of other processes.
 - https://www.geeksforgeeks.org/introduction-of-process-synchronization/
+### SQL types
+- DDL : Data Definition Language (Create, Alter, Drop)
+- DML : Data Modification Language (Insert, Update, Select)
+- DCL : Data Control Language (Grant, Revoke)
+### Having and Where clause
+- **Having** is used to specify a condition for a group or an aggregate function.
+- **Where** works on row data not on selected data
+- **Where** clause selects before grouping
+- **Having** clause selects after grouping
+- `EX: SELECT Student, Score FROM Marks WHERE Score >=40`
+- `EX: SELECT Student, SUM(score) AS total FROM Marks GROUP BY Student HAVING total > 70`
+### To find Duplicate rows do Group By
+- `select NAME, count(NAME) as num from Person group by NAME;`
+- `select NAME from Person group by NAME having count(NAME) > 1;`
+### Joins
+- Joins are used to combine data from two or more tables based on a common field between them.
+- JOIN or INNER JOIN
+    - ![image](https://blog.codinghorror.com/content/images/uploads/2007/10/6a0120a85dcdae970b012877702708970c-pi.png)
+    - The INNER JOIN keyword selects all rows from both the tables as long as the condition satisfies.
+    - This keyword will create the result-set by combining all rows from both the tables where the condition satisfies i.e value of the common field will be same
+    - `SELECT StudentCourse.COURSE_ID, Student.NAME, Student.AGE FROM Student INNER JOIN StudentCourse ON Student.ROLL_NO = StudentCourse.ROLL_NO;`
+- LEFT JOIN or LEFT OUTER JOIN
+    - ![image](https://i.stack.imgur.com/VkAT5.png)
+    - This join returns all the rows of the table on the left side of the join and matching rows for the table on the right side of join.
+    - The rows for which there is no matching row on right side, the result-set will contain null.
+    - LEFT JOIN is also known as LEFT OUTER JOIN.
+    - `
+        SELECT table1.column1,table1.column2,table2.column1, FROM table1 LEFT JOIN
+        ON table1.matching_column = table2.matching_column;`
+- RIGHT JOIN or RIGHT OUTER JOIN
+    - ![image](http://www.databasejournal.com/img/jk_JustSQL4_image004.jpg)
+    - RIGHT JOIN is similar to LEFT JOIN. RIGHT JOIN is also known as RIGHT OUTER JOIN
+    - This join returns all the rows of the table on the right side of the join and matching rows for the table on the left side of join.
+    - The rows for which there is no matching row on left side, the result-set will contain null.
+    - `SELECT table1.column1,table1.column2,table2.column1 FROM table1 RIGHT JOIN table2 ON table1.matching_column = table2.matching_column`
+- FULL JOIN
+    -![image](https://i.stack.imgur.com/3Ll1h.png)
+    - FULL JOIN creates the result-set by combining result of both LEFT JOIN and RIGHT JOIN.
+    - The result-set will contain all the rows from both the tables. The rows for which there is no matching, the result-set will contain NULL values.
+    - `SELECT table1.column1,table1.column2,table2.column1 FROM table1 FULL JOIN table2 ON table1.matching_column = table2.matching_column;`
+- CROSS JOIN or CARTESIAN JOIN
+    - The CARTESIAN JOIN is also known as CROSS JOIN.
+    - In a CARTESIAN JOIN there is a join for each row of one table to every row of another table. This usually happens when the matching column or WHERE condition is not specified.
+    - In the absence of a WHERE condition the CARTESIAN JOIN will behave like a CARTESIAN PRODUCT . i.e., the number of rows in the result-set is the product of the number of rows of the two tables.
+    - In the presence of WHERE condition this JOIN will function like a INNER JOIN.
+    - Generally speaking, Cross join is similar to an inner join where the join-condition will always evaluate to True
+    - `SELECT table1.column1 , table1.column2, table2.column1 FROM table1 CROSS JOIN table2;`
+- SELF JOIN
+    - As the name signifies, in SELF JOIN a table is joined to itself.
+    - That is, each row of the table is joined with itself and all other rows depending on some conditions.
+    - In other words we can say that it is a join between two copies of the same table
+    - `SELECT a.coulmn1 , b.column2 FROM table_name a, table_name b WHERE some_condition;`
+### View
+    - A View is a virtual table based on the result of an SQL statement.
+    - `CREATE VIEW view_name AS SELECT column_name(s) from table_name WHERE condition`
+    - Views can represent a subset of the data contained in a table. Views can join and simplify multiple tables into single virtual table.
+    - Consequently, a view can limit the degree of exposure of the underlying tables to the outer world: a given user may have permission to query the view, while denied access to the rest of the base table.
+    - Views can act as aggregated tables, where the database engine aggregates data (sum, average etc.) and presents the calculated results as part of the data
+    - Views can hide the complexity of data; for example a view could appear as Sales2000 or Sales2001, transparently partitioning the actual underlying table
+    - Views take very little space to store; the database contains only the definition of a view, not a copy of all the data which it presents.
+### Trigger
+    - A trigger is a code that associated with insert,update,delete operations.
+    - The code is executed automatically whenever the associated query is executed on a table.
+    - They are used to maintain integerity.
+### Stored Procedure
+    - A stored procedure is like a function that contains a set of operations compiled together.
+    - It contains a set of operations that are commonly used in an application to do some common database tasks.
+    - Stored Procedures can be called directly. Triggers cannot be called directly they are assosciated with queries.
+### Database Index
+    - A database index is a data structure that improves the speed of data retrieval operations on database table at the cost of additional writes and used more storage space.
+    - To support faster access according to different values, faster search like binary search for different values is desired.
+    - for this purpose, indexes are created on tables. These need extra space on disk but allow faster search according to different frequently searched values.
+###  What is the difference between CHAR and VARCHAR?
+    - CHAR and VARCHAR are differ in storage and retrieval.
+    - CHAR column length is fixed while VARCHAR length is variable.
+    - The maximum no. of character CHAR data type can hold is 255 character while VARCHAR can hold up to 4000 character.
+    - CHAR is 50% faster than VARCHAR.
+    - CHAR uses static memory allocation while VARCHAR uses dynamic memory allocation.
+### Spring Framework
+    -![link](https://www.journaldev.com/16966/spring-annotations)
+    - Spring Framework implements and promotes the principle of Inversion Of Control (IOC) or Dependency Inject (DI) and is in fact an IOC container.
+    - `@Configuration`
+        - Used to indicate that a class declares one or more `@Bean` methods.
+        - These classes are processed by the Spring Container to generate bean definitions and service requests for those beans at run time
+    - `@Bean`
+        - Indicates that a method produces a bean to be managed by the Spring container.
+        - This is one of the most used and important spring annotation. @Bean annotation also can be used with parameters like name, initMethod and destroyMethod.
+        - name – allows you give name for bean
+        - initMethod – allows you to choose method which will be invoked on context register (a method will be called on creation)
+        - destroyMethod – allows you to choose method which will be invoked on context shutdown ( a method will be called on destroy)
+    - `@PostConstruct` and `@PreDestroy`
+        - alternative way for bean initmethod and destroy method.
+    - `@ComponentScan`
