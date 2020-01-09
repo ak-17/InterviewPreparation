@@ -120,7 +120,6 @@ They are used with classes, methods, variables, constructors etc to provide info
     - Future<Integer> future = executorService.submit(task); future.get(); // exception is thrown only when we call future.get(); or else not thrown
 - Callable's call() method contains “throws Exception” clause so we can easily propagate checked exceptions further.
 ### Deadlock
-- Deadlock is a situation when two threads are waiting for each other and the waiting is never ends. Here both threads cant completes their tasks.
 - Deadlock is a situation where a set of processes are blocked because each process is holding one or more resources and waiting for another resource acquired by some other process and they are in a circular fashion.
 - Deadlock can arise if following conditions hold true (Coffman conditions)
     - Mutual Exclusion: One or more than one resource are non-sharable (Only one process can use at a time)
@@ -449,6 +448,21 @@ catch(ArithmeticException e) {
     - For a functional dependency A -> B. If A is non-prime and B is non-prime then it is called transitive dependency.
 - BCNF (Boyce Codd Normal Form)
     - A table is said to be in BCNF, it should be in 3NF and for any dependency A -> B, A should always be a super key i.e for A -> B, A cannot be a non-prime attribute with B being a prime attribute.
+### Process and Process Table
+- A process is an instance of a program in execution.
+- Operating System is responsible for managing all the processes that are running on a computer and allocate each process certain amount of processor time for its execution.
+- To keep track of the state of all processes, the OS maintains a table known as the process table.
+- Inside the table every process is listed along with the resources the processes are using and the current state of the process.
+- Process can be in 3 stages : *running, ready, waiting*
+- running state means the process has all the resources it needs for execution and has been given permission by OS to use the processor.
+- ready state means the process has all the resources it needs for execution and waiting for permission from OS to start executing.
+- wating state means it is waiting for some external event to occur such as user input or disk access.
+### Thread
+- A thread is a single sequence stream with in a process.
+- Because threads have properties of process they are also called light weight processes.
+- They are used to achieve parallelism.
+- A thread has its own program counter, register set and stack space.
+- Threads are not independent of each other like processes, they share code section, data section and os resources.
 ### Scheduling Algorithms
 - Arrival Time: Time at which the process arrives in the ready queue.
 - Completion Time: Time at which process completes its execution.
@@ -487,6 +501,9 @@ catch(ArithmeticException e) {
     - Processess are scheduled according to priorities
     - if two priorities match, then the one which arrived earlier will be scheduled first.
     - starvation is possible.
+- Multilevel Queue Scheduling (MLQ)
+    - According to the priority of process, processes are placed in the different queues.
+    - Generally high priority process are placed in the top level queue. Only after completion of processes from top level queue, lower level queued processes are scheduled.
 - High Response Ratio Next
     - processess with high respose ratio are scheduled first
     - Response Ration = (Waiting Time + Burst Time)/Burst Time
@@ -530,6 +547,23 @@ catch(ArithmeticException e) {
 - This notifies the OS that it must locate the page from virtual memory, then transfer it from storage device to main memory.
 - Once the page is moved to main memory then the program executes as usual.
 - each page fault requires swapping of pages from virtual memory to primary memory. This is significantly slower than accessing data directly from memory.
+### Page Replacement Algorithms
+- FIFO
+    -The operating system keeps track of all pages in the memory in a queue, the oldest page is in the front of the queue.
+    - When a page needs to be replaced front of the queue is removed.
+    - Belady's Anamoly : Belady’s anomaly proves that it is possible to have more page faults when increasing the number of page frames while using the First in First Out (FIFO).
+- Optimal Page Replacement
+    - In this algorithm, pages are replaced which have not been used for the longest duration.
+    - This is perfect but not possible,as we cannot know future requests.
+    - This is used to keep benchmar and analyse other algorithms
+- LRU
+    - Least Recently used page is replaced
+- 
+### Thrashing
+- Thrashing is a situation when the performance of a computer degrades or collapses.
+- Thrashing occurs when a system spends more time processing page faults than executing transactions.
+-While processing pagefaults is necessary to get the benefits of virtual memory, thrashing has a negative effect on the system.
+- As page fault rate increases more transactions need processing from the paging device. The queue at the paging device increases, resulting in increased service time for a page fault.
 ### How data is stored on hard disk
 - Hard disk is a common data storage used in computers. Data is stored on the hard disk in the form of 0 and 1.
 - The part of the hard disk that stores the data is known as platter.
