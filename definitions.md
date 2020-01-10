@@ -424,7 +424,6 @@ catch(ArithmeticException e) {
 - Isolation - Multiple transactions must be able to perform independently without interference. Changes occuring in a particular transaction will not be visible to any other transaction until that change is written to memory.
 - Durability - Changes of a successfull transaction should reflect even if the system goes down.
 ### Indexing
-- 
 ### DataBase Keys
 - Super Key : Any attribute or a set of attributes that are used to uniquely identify a row is super key.
 - Candidate Key : A minimal subset of a super key is a candidate key
@@ -638,43 +637,43 @@ catch(ArithmeticException e) {
     - In other words we can say that it is a join between two copies of the same table
     - `SELECT a.coulmn1 , b.column2 FROM table_name a, table_name b WHERE some_condition;`
 ### View
-    - A View is a virtual table based on the result of an SQL statement.
-    - `CREATE VIEW view_name AS SELECT column_name(s) from table_name WHERE condition`
-    - Views can represent a subset of the data contained in a table. Views can join and simplify multiple tables into single virtual table.
-    - Consequently, a view can limit the degree of exposure of the underlying tables to the outer world: a given user may have permission to query the view, while denied access to the rest of the base table.
-    - Views can act as aggregated tables, where the database engine aggregates data (sum, average etc.) and presents the calculated results as part of the data
-    - Views can hide the complexity of data; for example a view could appear as Sales2000 or Sales2001, transparently partitioning the actual underlying table
-    - Views take very little space to store; the database contains only the definition of a view, not a copy of all the data which it presents.
+- A View is a virtual table based on the result of an SQL statement.
+- `CREATE VIEW view_name AS SELECT column_name(s) from table_name WHERE condition`
+- Views can represent a subset of the data contained in a table. Views can join and simplify multiple tables into single virtual table.
+- Consequently, a view can limit the degree of exposure of the underlying tables to the outer world: a given user may have permission to query the view, while denied access to the rest of the base table.
+- Views can act as aggregated tables, where the database engine aggregates data (sum, average etc.) and presents the calculated results as part of the data
+- Views can hide the complexity of data; for example a view could appear as Sales2000 or Sales2001, transparently partitioning the actual underlying table
+- Views take very little space to store; the database contains only the definition of a view, not a copy of all the data which it presents.
 ### Trigger
-    - A trigger is a code that associated with insert,update,delete operations.
-    - The code is executed automatically whenever the associated query is executed on a table.
-    - They are used to maintain integerity.
+- A trigger is a code that associated with insert,update,delete operations.
+- The code is executed automatically whenever the associated query is executed on a table.
+- They are used to maintain integerity.
 ### Stored Procedure
-    - A stored procedure is like a function that contains a set of operations compiled together.
-    - It contains a set of operations that are commonly used in an application to do some common database tasks.
-    - Stored Procedures can be called directly. Triggers cannot be called directly they are assosciated with queries.
+- A stored procedure is like a function that contains a set of operations compiled together.
+- It contains a set of operations that are commonly used in an application to do some common database tasks.
+- Stored Procedures can be called directly. Triggers cannot be called directly they are assosciated with queries.
 ### Database Index
-    - A database index is a data structure that improves the speed of data retrieval operations on database table at the cost of additional writes and used more storage space.
-    - To support faster access according to different values, faster search like binary search for different values is desired.
-    - for this purpose, indexes are created on tables. These need extra space on disk but allow faster search according to different frequently searched values.
+- A database index is a data structure that improves the speed of data retrieval operations on database table at the cost of additional writes and used more storage space.
+- To support faster access according to different values, faster search like binary search for different values is desired.
+- for this purpose, indexes are created on tables. These need extra space on disk but allow faster search according to different frequently searched values.
 ###  What is the difference between CHAR and VARCHAR?
-    - CHAR and VARCHAR are differ in storage and retrieval.
-    - CHAR column length is fixed while VARCHAR length is variable.
-    - The maximum no. of character CHAR data type can hold is 255 character while VARCHAR can hold up to 4000 character.
-    - CHAR is 50% faster than VARCHAR.
-    - CHAR uses static memory allocation while VARCHAR uses dynamic memory allocation.
+- CHAR and VARCHAR are differ in storage and retrieval.
+- CHAR column length is fixed while VARCHAR length is variable.
+- The maximum no. of character CHAR data type can hold is 255 character while VARCHAR can hold up to 4000 character.
+- CHAR is 50% faster than VARCHAR.
+- CHAR uses static memory allocation while VARCHAR uses dynamic memory allocation.
 ### Spring Framework
-    -![link](https://www.journaldev.com/16966/spring-annotations)
-    - Spring Framework implements and promotes the principle of Inversion Of Control (IOC) or Dependency Inject (DI) and is in fact an IOC container.
-    - `@Configuration`
-        - Used to indicate that a class declares one or more `@Bean` methods.
-        - These classes are processed by the Spring Container to generate bean definitions and service requests for those beans at run time
-    - `@Bean`
-        - Indicates that a method produces a bean to be managed by the Spring container.
-        - This is one of the most used and important spring annotation. @Bean annotation also can be used with parameters like name, initMethod and destroyMethod.
-        - name – allows you give name for bean
-        - initMethod – allows you to choose method which will be invoked on context register (a method will be called on creation)
-        - destroyMethod – allows you to choose method which will be invoked on context shutdown ( a method will be called on destroy)
-    - `@PostConstruct` and `@PreDestroy`
-        - alternative way for bean initmethod and destroy method.
-    - `@ComponentScan`
+-![link](https://www.journaldev.com/16966/spring-annotations)
+- Spring Framework implements and promotes the principle of Inversion Of Control (IOC) or Dependency Inject (DI) and is in fact an IOC container.
+- `@Configuration`
+    - Used to indicate that a class declares one or more `@Bean` methods.
+    - These classes are processed by the Spring Container to generate bean definitions and service requests for those beans at run time
+- `@Bean`
+    - Indicates that a method produces a bean to be managed by the Spring container.
+    - This is one of the most used and important spring annotation. @Bean annotation also can be used with parameters like name, initMethod and destroyMethod.
+    - name – allows you give name for bean
+    - initMethod – allows you to choose method which will be invoked on context register (a method will be called on creation)
+    - destroyMethod – allows you to choose method which will be invoked on context shutdown ( a method will be called on destroy)
+- `@PostConstruct` and `@PreDestroy`
+    - alternative way for bean initmethod and destroy method.
+- `@ComponentScan`
