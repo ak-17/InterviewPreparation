@@ -188,6 +188,32 @@ They are used with classes, methods, variables, constructors etc to provide info
 - Polymorphism allows us to perform a single action in different ways.
 - Compile time Polymorphism -  It is also known as static polymorphism. 
 - Runtime Polymorphism - It is also known as Dynamic Method Dispatch.
+```
+class A { 
+    int temp = 10; 
+    public void print() 
+    { 
+        System.out.println("In Class A"); 
+    } 
+} 
+class B extends A { 
+    int temp = 20; 
+    public void print() 
+    { 
+        System.out.println("In Class B"); 
+    } 
+} 
+class C { 
+    public static void main(String args[]) 
+    { 
+        A a = new B(); 
+        System.out.println(a.temp); --line 1
+        a.print();  -- line 2
+    } 
+} 
+```
+- in the above code line 1 prints 10 as variables are bind at compile time
+- line 2 prints 20 as methods are invoked at run time
 ### Abstraction
 - Abstraction means using simple things to represent complexity.
 - abstraction is achieved by using abstract classes and interfaces
