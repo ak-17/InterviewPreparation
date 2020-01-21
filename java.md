@@ -1,0 +1,6 @@
+- Immutable Classes
+- Difference between checked and unchecked exceptions.?
+- How HashMap map works internally?
+- What is method overloading and overriding?
+- What is the diff between Array and ArrayList?
+- Suppose there are Two Interface A and B, both have one abstract method which is totally same no difference, if you implement both the interface in a class, then what will happen.
