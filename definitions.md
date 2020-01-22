@@ -614,6 +614,16 @@ catch(ArithmeticException e) {
 - DDL : Data Definition Language (Create, Alter, Drop)
 - DML : Data Modification Language (Insert, Update, Select)
 - DCL : Data Control Language (Grant, Revoke)
+### SQL Functions
+- CONCAT: joins two or more string values.
+- SUBSTR: extracts string of a specific length.
+- LENGTH: returns the length of the string
+- INSTR: returns the position of the specific character.
+- LPAD: padding of the left-side character value for right-justified value.
+- RPAD: padding of right-side character value for left-justified value.
+- TRIM: removes the defined character from beginning and end or both.
+- REPLACE: replaces a specific sequence of characters with another sequence of characters.
+- AVG, MAX, MIN, SUM, VARIANCE, COUNT
 ### Having and Where clause
 - **Having** is used to specify a condition for a group or an aggregate function.
 - **Where** works on row data not on selected data
