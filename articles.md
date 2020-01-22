@@ -1,1 +1,2 @@
 - [Difference between var, let and const](https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e)
+ - [Closure in javascript](https://www.tutorialsteacher.com/javascript/closure-in-javascript)
