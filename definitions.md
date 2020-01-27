@@ -713,3 +713,45 @@ catch(ArithmeticException e) {
 - `@PostConstruct` and `@PreDestroy`
     - alternative way for bean initmethod and destroy method.
 - `@ComponentScan`
+### Java Memory Model
+- Java Memory Model is a set of rules which all JVMs have to follow to ensure correct working of our concurrent programs
+- JMM is a specification or set of rules which guararntees visibility of fields (aka happens before) amidst reordering of instructions
+- Out of order exection
+- Field Visibility
+- Happens Before
+### Init Block
+```
+{
+    System.out.println("in init");
+}
+```
+- init block executes before constructor on creation of object
+### Java 8
+- Consumer :  accepts a value but doesn't return anything
+```
+void accept(T t);
+```
+- Predicate : accepts a value and returns a boolean
+```
+boolean test(T t);
+```
+- Function: accepts a value and returns a value
+```
+R apply(T t);
+```
+- map(Function) : used to convert an object from one type to different type or same type
+```
+map(Function<? super T, ? extends R> mapper)
+```
+- mapToInt, mapToDouble, mapToLong : same as above but returns respective data types
+-Collectors.groupingBy() - groups by a condition
+```
+Map<String,List<Employee>> groupedEmployeeMap =
+    employeeList.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+
+Map<String,Double> employeeSalaryMap =
+    employeeList.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment,
+                         Collectors.summingDouble(Employee::getSalary)));
+```

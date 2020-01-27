@@ -48,6 +48,10 @@ theFunction.call(undefined, ...["Matthew", "physicist"]); // used with the sprea
 - return value of a function that doesn't return anyting
 ### Closure
 - Closure means inner function has access to variables and parameters of an outer function.
+- A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
+- In other words, a closure gives you access to an outer function’s scope from an inner function.
+- To use a closure, define a function inside another function and expose it. To expose a function, return it or pass it to another function.
+- The inner function will have access to the variables in the outer function scope, even after the outer function has returned.
 ### var,let and const
 - **Scope**
     -- var global scoped or function scoped
@@ -63,6 +67,10 @@ theFunction.call(undefined, ...["Matthew", "physicist"]); // used with the sprea
     -- var variables are hoisted to top of its scope and initialiazed with value of undefined
     -- let is also hoisted to top of its scope but not initialized, you'll get *Reference Error* on accessing.
     -- const is also hoisted to top of its scope but not initialized, you'll get *Reference Error* on accessing.
+### Currying
+- Currying is a technique of evaluating a function with multiple arguments, into sequence of function with single/multiple argument.
+- Like we simply turn up add(2,3) into add(2)(3).
+
 ### Angular
 - Custom directive (tags)
 - MVC pattern
@@ -77,6 +85,19 @@ theFunction.call(undefined, ...["Matthew", "physicist"]); // used with the sprea
     - drag and drop && virtual scrolling
 ### String interpolation in Angular
 - template expressions can be enclosed and evaluated within [{--}]
+### Promise
+- A promise is an object that may produce a single value some time in the future: either a resolved value, or a reason that it’s not resolved (e.g., a network error occurred).
+- A promise may be in one of 3 possible states: fulfilled, rejected, or pending
+- Promise users can attach callbacks to handle the fulfilled value or the reason for rejection.
+- Promises are eager, meaning that a promise will start doing whatever task you give it as soon as the promise constructor is invoked.
+- The ES6 promise constructor takes a function. That function takes two parameters, resolve(), and reject().
+```
+fetch(url)
+  .then(process)
+  .then(save)
+  .catch(handleErrors)
+;
+```
 ### Observers and Promises
 - A Promise handles  a single event when an async operation completes or fails
 - Promises can gives a single event, observers can give mulitple events
