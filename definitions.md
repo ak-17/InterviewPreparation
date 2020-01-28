@@ -226,6 +226,8 @@ class C {
 - Supports Reusability  
 #### No of ways to create a thread 
 - 2 ways - by implementing Runnable and by extending Thread class
+-  When extending a Thread class there is no chance of extending any other class. Hence we are missing Inheritance benefits.
+- In the second approach, while implementing Runnable interface we can extends any other class. Hence we are able to use the benefits of Inheritance.
 ### Java Collections
 ![collection framework](https://media.geeksforgeeks.org/wp-content/uploads/java-collection.jpg)
 
@@ -755,3 +757,26 @@ Map<String,Double> employeeSalaryMap =
                 .collect(Collectors.groupingBy(Employee::getDepartment,
                          Collectors.summingDouble(Employee::getSalary)));
 ```
+### Different Threadpools
+- A thread pool reuses previously created threads to execute current tasks and offers a solution to the problem of thread cycle overhead and resource thrashing.
+-  Since the thread is already existing when the request arrives, the delay introduced by thread creation is eliminated, making the application more responsive.
+- newFixedThreadPool(int) : Creates a fixed size thread pool.
+- newCachedThreadPool() : Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available
+- newSingleThreadExecutor() : Creates a single thread.
+```
+ExecutorService pool = Executors.newFixedThreadPool(MAX_T);
+pool.execute(r1); 
+```
+- Risks in using thread pools
+    - DeadLock
+    - Thread Leakage : Thread Leakage occurs if a thread is removed from the pool to execute a task but not returned to it when the task completed. As an example, if the thread throws an exception and pool class does not catch this exception, then the thread will simply exit, reducing the size of the thread pool by one. If this repeats many times, then the pool would eventually become empty and no threads would be available to execute other requests.
+    - Resource Thrashing : If the thread pool size is very large then time is wasted in context switching between threads. Having more threads than the optimal number may cause starvation problem leading to resource thrashing as explained.
+- The optimum size of the thread pool depends on the number of processors available and the nature of the tasks. On a N processor system for a queue of only computation type processes, a maximum thread pool size of N or N+1 will achieve the maximum efficiency.But tasks may wait for I/O and in such a case we take into account the ratio of waiting time(W) and service time(S) for a request; resulting in a maximum pool size of N*(1+ W/S) for maximum efficiency.
+### ExecutorService
+### Concurrent Hashmap
+- In concurrent hashmap thread safety is ensured by having seperate locks for seperate **Segments**, resulting in better performance
+- By default the bucket size is 16 and the concurrency level is also 16
+- No null keys and values are allowed in concurrent hashmap
+- Iterator provided by concurrent hashmap is fail safe, which means it will not throw concurrentModificationExeption
+- Retrieval operations (like get) dont block so may overlap with update operations
+- as get() operations are not blocking some times correct values are not reflected
