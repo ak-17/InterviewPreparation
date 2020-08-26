@@ -1,5 +1,4 @@
-#comparator<t,t>
-#how-to-create-an-immutable-class
+- [Init Block](#init-block)
 
 
 ### Singleton Pattern
